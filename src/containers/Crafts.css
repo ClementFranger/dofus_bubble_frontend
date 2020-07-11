@@ -1,0 +1,22 @@
+.list-group-item {
+    flex: 1;
+    min-height:25vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: 0px;
+}
+
+.plusValue {
+  color: green;
+  font-weight: bold;
+}
+
+.minusValue {
+  color: red;
+  font-weight: bold;
+}
+
+.card {
+  text-decoration: none !important;
+}
