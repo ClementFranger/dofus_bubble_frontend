@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { API } from "aws-amplify";
+import { Typeahead } from 'react-bootstrap-typeahead';
 import { useAppContext } from "../../libs/ContextLib";
+import "./Search.css";
 
 
 export default function Search() {
 
-  const [categoriesValue, setCategoriesValue] = useState('resources');
-  const { itemsPrice, setItemsPrice } = useAppContext();
-
+  const [singleSelections, setSingleSelections] = useState([]);
+  const [multiSelections, setMultiSelections] = useState([]);
+  const { itemsPrice } = useAppContext();
 
   return (
     <>
-      {renderCategories()}
+      <Typeahead id="items_price" labelKey="name" placeholder="Choose an item to price"
+          onChange={setSingleSelections}
+          options={itemsPrice}
+          selected={singleSelections}
+      />
     </>
   );
 }

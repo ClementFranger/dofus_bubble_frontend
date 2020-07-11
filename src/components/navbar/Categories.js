@@ -6,7 +6,7 @@ import { useAppContext } from "../../libs/ContextLib";
 
 export default function Categories() {
 
-  const [categoriesValue, setCategoriesValue] = useState('resources');
+  const [categoriesValue, setCategoriesValue] = useState('');
   const { itemsPrice, setItemsPrice } = useAppContext();
 
   const [categories, setCategories] = useState([
