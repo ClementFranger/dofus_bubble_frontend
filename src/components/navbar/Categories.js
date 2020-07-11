@@ -7,7 +7,7 @@ import { useAppContext } from "../../libs/ContextLib";
 export default function Categories() {
 
   const [categoriesValue, setCategoriesValue] = useState('');
-  const { itemsPrice, setItemsPrice } = useAppContext();
+  const { setItemsPrice } = useAppContext();
 
   const [categories, setCategories] = useState([
     { name: 'consumables'}, { name: 'equipments'},
@@ -25,7 +25,8 @@ export default function Categories() {
   }
 
   function renderCategories() {
-    return <ButtonGroup toggle>
+    return (
+      <ButtonGroup toggle>
         {categories.map((c, i) => (
           <ToggleButton key={c.name} type="radio" variant="secondary" name="category" value={c.name}
             checked={categoriesValue === c.name}
@@ -33,6 +34,7 @@ export default function Categories() {
             {c.name}
           </ToggleButton> ))}
       </ButtonGroup>
+    )
   }
 
   return (

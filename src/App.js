@@ -7,10 +7,11 @@ import { AppContext } from "./libs/ContextLib";
 function App() {
 
   const [itemsPrice, setItemsPrice] = useState([]);
+  const [itemPrice, setItemPrice] = useState([]);
 
   return (
     <>
-      <AppContext.Provider value={{ itemsPrice, setItemsPrice }}>
+      <AppContext.Provider value={{ itemsPrice, setItemsPrice, itemPrice, setItemPrice }}>
         <Top />
         <Routes />
       </AppContext.Provider>
