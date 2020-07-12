@@ -1,6 +1,5 @@
 .list-group-item {
     flex: 1;
-    min-height:25vh;
     display: flex;
     align-items: center;
     text-align: center;
