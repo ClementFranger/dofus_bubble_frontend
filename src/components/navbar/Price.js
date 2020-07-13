@@ -18,7 +18,7 @@ export default function Price() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    const payload = {"_id": itemPrice[0]._id, "price": parseInt(price)}
+    const payload = {"_id": itemPrice[0]._id, "name": itemPrice[0].name, "price": parseInt(price)}
     pushPrice(payload)
     setItemPrice([])
     setPrice("")
