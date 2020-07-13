@@ -25,7 +25,11 @@ export default function Price() {
   }
 
   function pushPrice(item) {
-    API.post("dofus_bubble", "/dofus_bubble/dynamodb/", {body: item});
+    try {
+      API.post("dofus_bubble", "/dofus_bubble/dynamodb/", {body: item});
+    } catch (e) {
+      alert(e.message);
+    }
   }
 
   function renderSearch() {

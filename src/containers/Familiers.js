@@ -16,7 +16,7 @@ export default function Familiers() {
   }, []);
 
   function scanFamiliersPrice() {
-    return API.get("dofus_bubble", "/dofus_bubble/dofus/familiers");
+    return API.get("dofus_bubble", "/dofus_bubble/dofus/familiers/");
   }
 
   function computePlusValue(item) {
