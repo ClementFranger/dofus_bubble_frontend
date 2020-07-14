@@ -10,7 +10,7 @@ export default function Familiers() {
   useEffect(() => {
     async function loadFamiliers() {
       const familiersCraft = await scanFamiliersPrice();
-      setFamiliersCraft(familiersCraft)
+      setFamiliersCraft(familiersCraft.map((item, i) => computePlusValue(item)))
     }
     loadFamiliers()
   }, []);
@@ -20,18 +20,19 @@ export default function Familiers() {
   }
 
   function computePlusValue(item) {
-    return Math.round(item.price / item.xp*100)/100;
+    item.value = Math.round(item.price / item.xp*100)/100;
+    return item
   }
 
   function renderItems() {
-    return familiersCraft.map((item, i) =>
-      <ListGroup.Item key={item._id} variant="flush">
+    return familiersCraft.sort((a, b) => a.value > b.value ? 1 : -1).map((item, i) =>
+      <ListGroup.Item key={i} variant="flush">
         <Card as="a" href={item.url} style={{ width: '18rem' }}>
           {/*TODO : add image to cart if possible (403 on dofus site)
           <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6007.png"/>*/}
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
-            <Card.Text>{computePlusValue(item)}</Card.Text>
+            <Card.Text>{item.value}</Card.Text>
           </Card.Body>
         </Card>
       </ListGroup.Item>
