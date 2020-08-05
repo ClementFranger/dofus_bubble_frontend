@@ -28,8 +28,8 @@ export default function Crafts() {
     return itemsCraft.map((item, i) =>
       <ListGroup.Item key={item._id} variant="flush">
         <Card as="a" href={item.url} style={{ width: '18rem' }}>
-          {/*TODO : add image to cart if possible (403 on dofus site)
-          <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6007.png"/>*/}
+          {/*TODO : add image to cart if possible (403 on dofus site)*/}
+          <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6721.png"/>
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
             <Card.Text className={computePlusValue(item).class}>{computePlusValue(item).plus_value}</Card.Text>
