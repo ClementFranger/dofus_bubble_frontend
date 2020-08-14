@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Card } from "react-bootstrap";
-import "./Crafts.css";
+import "./Professions.css";
 import { API } from "aws-amplify";
 
 export default function Familiers() {
