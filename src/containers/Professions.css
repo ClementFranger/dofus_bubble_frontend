@@ -1,0 +1,35 @@
+.list-group-horizontal {
+    flex-wrap: wrap;
+}
+
+.list-group-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 0px;
+}
+
+.title {
+  text-align: center;
+}
+
+.recipe {
+  font-size: 1rem;
+  line-height: 0.75rem;
+}
+
+.profit {
+  font-weight: bold;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.card {
+  text-decoration: none !important;
+}

@@ -26,7 +26,7 @@ export default function Price() {
 
   function pushPrice(item) {
     try {
-      API.post("dofus_bubble", "/dofus_bubble/dynamodb/", {body: item});
+      API.post("dofus_bubble", "/dofus_bubble/prices", {body: item});
     } catch (e) {
       alert(e.message);
     }
