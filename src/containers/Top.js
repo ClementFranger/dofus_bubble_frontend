@@ -33,7 +33,7 @@ export default function Top() {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" className="justify-content-between" collapseOnSelect>
+      <Navbar bg="dark" variant="dark" fixed="top" className="justify-content-between" collapseOnSelect>
         {renderActions()}
         {renderPrice()}
       </Navbar>

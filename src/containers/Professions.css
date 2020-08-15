@@ -1,5 +1,7 @@
+{/*TODO : find better way that fixed top does not overwrite main*/}
 .list-group-horizontal {
     flex-wrap: wrap;
+    margin-top: 6rem;
 }
 
 .list-group-item {
