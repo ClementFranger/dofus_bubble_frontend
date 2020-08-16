@@ -39,10 +39,34 @@ export default function Professions() {
         return 0;
   }
 
-  function renderItemsProfessionsRecipe(recipe) {
-    return recipe.map((i, _) =>
-      <Card.Text key={_} className={'recipe ' + priceCss(i.price)}>{i.name}</Card.Text>
+  function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+  function tooltipPrice(price) {
+    return (<Tooltip>{numberWithSpaces(price)}</Tooltip>);
+  }
+
+  function renderOverlayItemPrice(item) {
+    return (item.price ?
+      <OverlayTrigger key={item._id} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(item.price)}>
+        <Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>
+      </OverlayTrigger>
+      : <Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>
     );
+  }
+
+  function renderOverlayRecipePrice(i) {
+    return (i.price ?
+      <OverlayTrigger key={i.name} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(i.price)}>
+        <Card.Text key={i.name} className={'recipe ' + priceCss(i.price)}>{i.name}</Card.Text>
+      </OverlayTrigger>
+      : <Card.Text key={i.name} className={'recipe ' + priceCss(i.price)}>{i.name}</Card.Text>
+    );
+  }
+
+  function renderItemsProfessionsRecipe(recipe) {
+    return recipe.map((i, _) => renderOverlayRecipePrice(i));
   }
 
   function renderItemsProfessions() {
@@ -52,7 +76,8 @@ export default function Professions() {
           {/*TODO : add image to cart if possible (403 on dofus site)*/}
           {/*<Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6721.png"/>*/}
           <Card.Body>
-            <Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>
+            {/*<Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>*/}
+            {renderOverlayItemPrice(item)}
             {renderItemsProfessionsRecipe(item.recipe)}
             <Card.Text className={'title profit ' + priceCss(item.profit)}>{item.profit}</Card.Text>
           </Card.Body>
@@ -60,6 +85,8 @@ export default function Professions() {
       </ListGroup.Item>
     );
   }
+
+
 
   return (
     <>
