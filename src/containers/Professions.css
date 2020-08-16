@@ -4,10 +4,6 @@
 }
 
 .list-group-horizontal {
-  margin-top: 6rem;
-}
-
-.list-group-horizontal {
     flex-wrap: wrap;
 }
 
