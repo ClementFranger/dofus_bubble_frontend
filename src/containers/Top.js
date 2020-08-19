@@ -5,6 +5,7 @@ import Categories from "../components/navbar/Categories";
 import Price from "../components/navbar/Price";
 import Profession from "../components/navbar/Profession";
 import Familier from "../components/navbar/Familier";
+import Server from "../components/navbar/Server";
 
 export default function Top() {
 
@@ -26,6 +27,7 @@ export default function Top() {
         <Navbar bg="dark" variant="dark" collapseOnSelect>
           <Categories/>
           <Price/>
+          <Server/>
         </Navbar>
       </>
     )

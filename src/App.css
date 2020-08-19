@@ -1,3 +1,10 @@
 a:focus {
-  outline:none
+  outline:none;
+  text-decoration: none;
 }
+
+{/*.nav-link:hover {
+  color: #fff !important;
+  text-decoration: none;
+}
+*/}

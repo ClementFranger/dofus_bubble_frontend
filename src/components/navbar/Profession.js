@@ -34,7 +34,7 @@ export default function Profession() {
   return (
     <>
       <Nav>
-        <NavDropdown title="Professions" onSelect={handleSelect}>
+        <NavDropdown title={profession} onSelect={handleSelect}>
           {renderProfessions(professions)}
         </NavDropdown>
       </Nav>
