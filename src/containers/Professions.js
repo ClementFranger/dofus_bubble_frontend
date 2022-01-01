@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import "./Professions.css";
+import "./Container.css";
 import { API } from "aws-amplify";
 import { useAppContext } from "../libs/ContextLib";
+import { numberWithSpaces, tooltipPrice } from "./Utils.js"
 
 export default function Professions() {
 
@@ -39,14 +40,6 @@ export default function Professions() {
         return 0;
   }
 
-  function numberWithSpaces(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  }
-
-  function tooltipPrice(price) {
-    return (<Tooltip>{numberWithSpaces(price)}</Tooltip>);
-  }
-
   function renderOverlayItemPrice(item) {
     return (item.price ?
       <OverlayTrigger key={item._id} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(item.price)}>
@@ -65,8 +58,12 @@ export default function Professions() {
     );
   }
 
-  function renderItemsProfessionsRecipe(recipe) {
-    return recipe.map((i, _) => renderOverlayRecipePrice(i));
+  function renderItemsProfessionsRecipe(item) {
+    return item.recipe.map((i, _) => renderOverlayRecipePrice(i));
+  }
+
+  function renderOverlayItemProfit(item) {
+    return <Card.Text className={'title profit ' + priceCss(item.profit)}>{numberWithSpaces(item.profit)}</Card.Text>;
   }
 
   function renderItemsProfessions() {
@@ -76,10 +73,9 @@ export default function Professions() {
           {/*TODO : add image to cart if possible (403 on dofus site)*/}
           {/*<Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6721.png"/>*/}
           <Card.Body>
-            {/*<Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>*/}
             {renderOverlayItemPrice(item)}
-            {renderItemsProfessionsRecipe(item.recipe)}
-            <Card.Text className={'title profit ' + priceCss(item.profit)}>{item.profit}</Card.Text>
+            {renderItemsProfessionsRecipe(item)}
+            {renderOverlayItemProfit(item)}
           </Card.Body>
         </Card>
       </ListGroup.Item>
