@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Card } from "react-bootstrap";
-import "./Professions.css";
+import "./Container.css";
 import { API } from "aws-amplify";
 
 export default function Familiers() {
@@ -27,7 +27,8 @@ export default function Familiers() {
   function renderItems() {
     return familiersCraft.sort((a, b) => a.value > b.value ? 1 : -1).map((item, i) =>
       <ListGroup.Item key={i} variant="flush">
-        <Card as="a" href={item.url} style={{ width: '18rem' }}>
+        <Card style={{ width: '20rem' }}>
+        {/*<Card as="a" href={item.url} style={{ width: '18rem' }}>*/}
           {/*TODO : add image to cart if possible (403 on dofus site)
           <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6007.png"/>*/}
           <Card.Body>
@@ -41,7 +42,7 @@ export default function Familiers() {
 
   return (
     <>
-      <ListGroup>
+      <ListGroup horizontal>
         {renderItems()}
       </ListGroup>
     </>

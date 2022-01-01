@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import "./Professions.css";
+import "./Container.css";
 import { API } from "aws-amplify";
 import { useAppContext } from "../libs/ContextLib";
 
@@ -68,8 +68,12 @@ export default function Professions() {
     );
   }
 
-  function renderItemsProfessionsRecipe(recipe) {
-    return recipe.map((i, _) => renderOverlayRecipePrice(i));
+  function renderItemsProfessionsRecipe(item) {
+    return item.recipe.map((i, _) => renderOverlayRecipePrice(i));
+  }
+
+  function renderOverlayItemProfit(item) {
+    return <Card.Text className={'title profit ' + priceCss(item.profit)}>{numberWithSpaces(item.profit)}</Card.Text>;
   }
 
   function renderItemsProfessions() {
@@ -81,8 +85,8 @@ export default function Professions() {
           <Card.Body>
             {/*<Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>*/}
             {renderOverlayItemPrice(item)}
-            {renderItemsProfessionsRecipe(item.recipe)}
-            <Card.Text className={'title profit ' + priceCss(item.profit)}>{numberWithSpaces(item.profit)}</Card.Text>
+            {renderItemsProfessionsRecipe(item)}
+            {renderOverlayItemProfit(item)}
           </Card.Body>
         </Card>
       </ListGroup.Item>
