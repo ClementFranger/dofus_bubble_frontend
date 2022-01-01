@@ -7,6 +7,7 @@ import { tooltipPrice } from "./Utils.js"
 export default function Familiers() {
 
   const [familiersCraft, setFamiliersCraft] = useState([]);
+  const [maxXP, setmaxXP] = useState(50);
 
   useEffect(() => {
     async function loadFamiliers() {
@@ -22,6 +23,7 @@ export default function Familiers() {
 
   function computePlusValue(item) {
     item.value = Math.round(item.price / item.xp*100)/100;
+    item.max_price = Math.round(maxXP * item.xp);
     return item
   }
 
@@ -34,6 +36,15 @@ export default function Familiers() {
     );
   }
 
+  function renderOverlayMaxItemPrice(item) {
+    return (item.price ?
+      <OverlayTrigger key={item._id} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(item.max_price)}>
+        <Card.Text className={'title profit'}>{item.value}</Card.Text>
+      </OverlayTrigger>
+      : <Card.Text className={'title profit'}>{item.value}</Card.Text>
+    );
+  }
+
   function renderItems() {
     return familiersCraft.sort((a, b) => a.value > b.value ? 1 : -1).map((item, i) =>
       <ListGroup.Item key={i} variant="flush">
@@ -42,7 +53,8 @@ export default function Familiers() {
           <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6007.png"/>*/}
           <Card.Body>
             {renderOverlayItemPrice(item)}
-            <Card.Text className={'title profit'}>{item.value}</Card.Text>
+            {renderOverlayMaxItemPrice(item)}
+            {/*<Card.Text className={'title profit'}>{item.value}</Card.Text>*/}
           </Card.Body>
         </Card>
       </ListGroup.Item>

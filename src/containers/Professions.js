@@ -40,17 +40,6 @@ export default function Professions() {
         return 0;
   }
 
-  // function numberWithSpaces(price) {
-  //   if (Number.isInteger(price))
-  //       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  //   else
-  //       return price;
-  // }
-  //
-  // function tooltipPrice(price) {
-  //   return (<Tooltip>{numberWithSpaces(price)}</Tooltip>);
-  // }
-
   function renderOverlayItemPrice(item) {
     return (item.price ?
       <OverlayTrigger key={item._id} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(item.price)}>
