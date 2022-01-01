@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ListGroup, Card } from "react-bootstrap";
+import { ListGroup, Card, OverlayTrigger } from "react-bootstrap";
 import "./Container.css";
 import { API } from "aws-amplify";
+import { tooltipPrice } from "./Utils.js"
 
 export default function Familiers() {
 
@@ -24,16 +25,24 @@ export default function Familiers() {
     return item
   }
 
+  function renderOverlayItemPrice(item) {
+    return (item.price ?
+      <OverlayTrigger key={item._id} placement="right" delay={{ show: 250, hide: 400 }} overlay={tooltipPrice(item.price)}>
+        <Card.Title className={'title'}>{item.name}</Card.Title>
+      </OverlayTrigger>
+      : <Card.Title className={'title'}>{item.name}</Card.Title>
+    );
+  }
+
   function renderItems() {
     return familiersCraft.sort((a, b) => a.value > b.value ? 1 : -1).map((item, i) =>
       <ListGroup.Item key={i} variant="flush">
         <Card style={{ width: '20rem' }}>
-        {/*<Card as="a" href={item.url} style={{ width: '18rem' }}>*/}
           {/*TODO : add image to cart if possible (403 on dofus site)
           <Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6007.png"/>*/}
           <Card.Body>
-            <Card.Title>{item.name}</Card.Title>
-            <Card.Text>{item.value}</Card.Text>
+            {renderOverlayItemPrice(item)}
+            <Card.Text className={'title profit'}>{item.value}</Card.Text>
           </Card.Body>
         </Card>
       </ListGroup.Item>

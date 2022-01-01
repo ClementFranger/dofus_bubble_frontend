@@ -3,6 +3,7 @@ import { ListGroup, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./Container.css";
 import { API } from "aws-amplify";
 import { useAppContext } from "../libs/ContextLib";
+import { numberWithSpaces, tooltipPrice } from "./Utils.js"
 
 export default function Professions() {
 
@@ -39,16 +40,16 @@ export default function Professions() {
         return 0;
   }
 
-  function numberWithSpaces(price) {
-    if (Number.isInteger(price))
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    else
-        return price;
-  }
-
-  function tooltipPrice(price) {
-    return (<Tooltip>{numberWithSpaces(price)}</Tooltip>);
-  }
+  // function numberWithSpaces(price) {
+  //   if (Number.isInteger(price))
+  //       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  //   else
+  //       return price;
+  // }
+  //
+  // function tooltipPrice(price) {
+  //   return (<Tooltip>{numberWithSpaces(price)}</Tooltip>);
+  // }
 
   function renderOverlayItemPrice(item) {
     return (item.price ?
@@ -83,7 +84,6 @@ export default function Professions() {
           {/*TODO : add image to cart if possible (403 on dofus site)*/}
           {/*<Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6721.png"/>*/}
           <Card.Body>
-            {/*<Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>*/}
             {renderOverlayItemPrice(item)}
             {renderItemsProfessionsRecipe(item)}
             {renderOverlayItemProfit(item)}
