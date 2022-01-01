@@ -39,9 +39,11 @@ export default function Professions() {
         return 0;
   }
 
-  function numberWithSpaces(x) {
-    console.log('salut')
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  function numberWithSpaces(price) {
+    if (Number.isInteger(price))
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    else
+        return price;
   }
 
   function tooltipPrice(price) {
@@ -80,7 +82,7 @@ export default function Professions() {
             {/*<Card.Title className={'title ' + priceCss(item.price)}>{item.name} - Niv. {item.level}</Card.Title>*/}
             {renderOverlayItemPrice(item)}
             {renderItemsProfessionsRecipe(item.recipe)}
-            <Card.Text className={'title profit ' + priceCss(item.profit)}>{item.profit}</Card.Text>
+            <Card.Text className={'title profit ' + priceCss(item.profit)}>{numberWithSpaces(item.profit)}</Card.Text>
           </Card.Body>
         </Card>
       </ListGroup.Item>
