@@ -74,13 +74,8 @@ export default function Professions() {
           {/*<Card.Img variant="top" src="https://static.ankama.com/dofus/www/game/items/200/6721.png"/>*/}
           <Card.Body>
             {renderOverlayItemPrice(item)}
-<<<<<<< HEAD
-            {renderItemsProfessionsRecipe(item.recipe)}
-            <Card.Text className={'title profit ' + priceCss(item.profit)}>{numberWithSpaces(item.profit)}</Card.Text>
-=======
             {renderItemsProfessionsRecipe(item)}
             {renderOverlayItemProfit(item)}
->>>>>>> 95273852f881968e0c03b6d7b1ef8e8c8c71895d
           </Card.Body>
         </Card>
       </ListGroup.Item>
